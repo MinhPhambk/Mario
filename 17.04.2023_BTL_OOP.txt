@@ -1,0 +1,42 @@
+Game con rắn: https://www.youtube.com/watch?v=91a7ceECNTc
+
+Task:
+1. Clone lại game trên youtube
+	---> cấu trúc hàm, prj, cách triển khai GUI
+
+Kết luận: Đây là game 1 người chơi ---> basic
+			---> Game 2 người chơi
+			---> Viết lại cấu trúc prj thành MVC 
+					(view (GUI), controller (xử lý điều hướng method), 
+					model (viết các hàm xử lý))
+			---> Dependency Injection (kỹ thuật giảm bớt sự phụ thuộc giữa các class)
+			---> Viết lại UI đẹp hơn 
+
+merge
+review: check cú pháp, cách đặt tên chuẩn, ...
+
+
+Đến 12h đêm thứ 6, mng up code lên git task 1!!!!!!!!!!!!!!!!!
+
+
+--------------------------------------------------------------------------
+
+Git: quản lý quy trình CI/CD
+
+git: 
+	git pull: tức là tải code từ 1 prj và hợp nhất với code của mình trên local
+	git push: tức là đẩy code lên git project trên server
+	git commit: Tức là gán nhãn command cho việc thay đổi code 
+	git clone: tải code về máy, yêu cầu thư mục chỉ định tải xuống 
+				phải là thư mục trống
+
+SourceTree (git desktop): https://www.sourcetreeapp.com/
+Clone git: https://github.com/MinhPhambk/SnakeGame.git
+
+
+
+
+
+
+
+
