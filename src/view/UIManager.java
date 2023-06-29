@@ -66,7 +66,7 @@ public class UIManager extends JPanel{
             drawStartScreen(g2);
         }
         else if(gameStatus == GameStatus.MAP_SELECTION){
-            drawAboutScreen(g2);
+            /*drawAboutScreen(g2);
 
             Timer timer = new Timer();
             timer.schedule(new TimerTask() {
@@ -74,7 +74,7 @@ public class UIManager extends JPanel{
                 public void run() {
                     drawMapSelectionScreen(g2);
                 }
-            }, 5000);
+            }, 5000);*/
 
             drawMapSelectionScreen(g2);
         }
