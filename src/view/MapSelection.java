@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class MapSelection {
@@ -13,9 +14,8 @@ public class MapSelection {
         this.mapSelectionItems = createItems(this.maps);
     }
 
-    public void draw(Graphics g){
-        g.setColor(Color.BLACK);
-        g.fillRect(0,0, 1280, 720);
+    public void draw(Graphics g, BufferedImage selectScreen){
+        g.drawImage(selectScreen, 0, 0, null);
 
         if(mapSelectionItems == null){
             System.out.println(1);
@@ -24,11 +24,11 @@ public class MapSelection {
 
         String title = "Select a Map";
         int x_location = (1280 - g.getFontMetrics().stringWidth(title))/2;
-        g.setColor(Color.YELLOW);
+        g.setColor(new Color(255,69,0));
         g.drawString(title, x_location, 150);
 
         for(MapSelectionItem item : mapSelectionItems){
-            g.setColor(Color.WHITE);
+            g.setColor(new Color(255,69,0));
             int width = g.getFontMetrics().stringWidth(item.getName().split("[.]")[0]);
             int height = g.getFontMetrics().getHeight();
             item.setDimension( new Dimension(width, height));
@@ -39,6 +39,7 @@ public class MapSelection {
 
     private void getMaps(){
         //TODO: read from file
+        //maps.add("Wanna Know Our Story?");
         maps.add("Map 1.png");
         maps.add("Map 2.png");
     }

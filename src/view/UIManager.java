@@ -21,7 +21,7 @@ public class UIManager extends JPanel{
 
     private GameEngine engine;
     private Font gameFont;
-    private BufferedImage startScreenImage, aboutScreenImage, helpScreenImage, gameOverScreen;
+    private BufferedImage startScreenImage, aboutScreenImage, helpScreenImage, gameOverScreen, selectScreen, storyScreen;
     private BufferedImage heartIcon;
     private BufferedImage coinIcon;
     private BufferedImage selectIcon;
@@ -45,6 +45,8 @@ public class UIManager extends JPanel{
         this.helpScreenImage = loader.loadImage("/help-screen.png");
         this.aboutScreenImage = loader.loadImage("/about-screen.png");
         this.gameOverScreen = loader.loadImage("/game-over.png");
+        this.selectScreen = loader.loadImage("/select-screen.png");
+        this.storyScreen = loader.loadImage("/story-screen.png");
 
         try {
             InputStream in = getClass().getResourceAsStream("/media/font/mario-font.ttf");
@@ -66,20 +68,11 @@ public class UIManager extends JPanel{
             drawStartScreen(g2);
         }
         else if(gameStatus == GameStatus.MAP_SELECTION){
-            /*drawAboutScreen(g2);
-
-            Timer timer = new Timer();
-            timer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    drawMapSelectionScreen(g2);
-                }
-            }, 5000);*/
-
             drawMapSelectionScreen(g2);
         }
         else if(gameStatus == GameStatus.ABOUT_SCREEN){
             drawAboutScreen(g2);
+            
         }
         else if(gameStatus == GameStatus.HELP_SCREEN){
             drawHelpScreen(g2);
@@ -107,6 +100,10 @@ public class UIManager extends JPanel{
         }
 
         g2.dispose();
+    }
+
+    private void drawStoryScreen(Graphics2D g2) {
+        g2.drawImage(storyScreen, 0, 0, null);
     }
 
     private void drawRemainingTime(Graphics2D g2) {
@@ -144,7 +141,7 @@ public class UIManager extends JPanel{
 
     private void drawPauseScreen(Graphics2D g2) {
         g2.setFont(gameFont.deriveFont(50f));
-        g2.setColor(Color.WHITE);
+        g2.setColor(new Color(255,69,0));
         String displayedStr = "PAUSED";
         int stringLength = g2.getFontMetrics().stringWidth(displayedStr);
         g2.drawString(displayedStr, (getWidth()-stringLength)/2, getHeight()/2);
@@ -171,7 +168,7 @@ public class UIManager extends JPanel{
         g2.setColor(Color.WHITE);
         String displayedStr = "Points: " + engine.getScore();
         int stringLength = g2.getFontMetrics().stringWidth(displayedStr);;
-        //g2.drawImage(coinIcon, 50, 10, null);
+        g2.drawImage(coinIcon, 50, 10, null);
         g2.drawString(displayedStr, 300, 50);
     }
 
@@ -183,8 +180,8 @@ public class UIManager extends JPanel{
 
     private void drawMapSelectionScreen(Graphics2D g2){
         g2.setFont(gameFont.deriveFont(50f));
-        g2.setColor(Color.WHITE);
-        mapSelection.draw(g2);
+        g2.setColor(Color.ORANGE);
+        mapSelection.draw(g2, selectScreen);
         int row = engine.getSelectedMap();
         int y_location = row*100+300-selectIcon.getHeight();
         g2.drawImage(selectIcon, 375, y_location, null);
